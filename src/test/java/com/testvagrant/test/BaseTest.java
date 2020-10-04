@@ -20,25 +20,6 @@ public class BaseTest {
 	Properties prop = new Properties();
 	InputStream input;
 
-  @BeforeMethod
-  public void beforeMethod() {
-	  
-  }
-
-  @BeforeClass
-  public void beforeClass() {
-	  try {
-			input = new FileInputStream("Config.properties");
-			prop.load(input);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	  String browserType = prop.getProperty("browserType");
-	  String chromeOrGeckoDriverPath = prop.getProperty("chromeOrGeckoDriverPath");
-	  driver = startDriver.startDriver(browserType, chromeOrGeckoDriverPath);
-	  driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
-  }
-
   @AfterClass
   public void afterClass() {
 	  driver.quit();

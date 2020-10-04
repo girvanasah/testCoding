@@ -1,13 +1,38 @@
 package com.testvagrant.pageObjects;
 
-public class NDTVHomePage {
+import org.openqa.selenium.WebDriver;
+
+import com.testvagrant.utils.BaseUI;
+import com.testvagrant.utils.GenericFunctions;
+
+public class NDTVHomePage extends BaseUI {
+	
+	WebDriver driver;
+	GenericFunctions generic;
+	
+	public NDTVHomePage(WebDriver driver) {
+		super(driver);
+		this.driver = driver;
+		this.generic = new GenericFunctions(driver);
+		
+	}
+	
 	
 	public static String topNavMoreLnk = "//a[@id='h_sub_menu']";
 	public static String menuOptionLnk = "//a[text()='%s']";
-	public static String pinYourCityTxtBox = "//input[@id='searchBox']";
-	public static String selectYourCityChkBox = "//div[@id='messages']//label[@for='%s']/input";
-	public static String selectCityLabelMapTxt = "//div[@id='map_canvas']//div[@title='%s']//div[@class='cityText']";
 	
 	
-
+	
+	public void openTopNavMoreOptions() {
+		generic.waitForCompletePageLoad();
+		clickElementUsingExplicitWait(topNavMoreLnk);
+		generic.waitForCompletePageLoad();
+	}
+	
+	public void clickOnOptionFromTopNavBar(String option) {
+		generic.waitForCompletePageLoad();
+		clickElementUsingExplicitWait(String.format(menuOptionLnk, option));
+		generic.waitForCompletePageLoad();
+	}
+	
 }
