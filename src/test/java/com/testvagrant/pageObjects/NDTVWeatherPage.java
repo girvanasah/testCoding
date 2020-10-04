@@ -53,14 +53,17 @@ public class NDTVWeatherPage extends BaseUI {
 	}
 
 	public String getTemperatureInDegreeCelsius(String cityName) {
+		String temp = null;
 		return temp;
 	}
 
 	public String getTemperatureInFarenheit(String cityName) {
+		String temp = null;
 		return temp;
 	}
 
 	public String getHumidity(String cityName) {
+		String humidity = null;
 		return humidity;
 	}
 }
