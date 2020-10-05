@@ -13,3 +13,9 @@ This is a Maven based project.
 
 Variables like City name, variance, browser type are configurable and can be changed in config.properties
 
+Steps to execute
+
+1. Change the variables in config.properties as per requirement 
+2. We need to set the path of chrome/gecko driver in config.properties file
+3. Run the testng.xml directly or from terminal/cmd navigate inside the project and execute the command "mvn test"
+
