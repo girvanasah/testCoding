@@ -19,33 +19,33 @@ public class BaseUI {
 		wait = new WebDriverWait(driver, 10);
 	}
 
-	public WebElement getElement(By loactor) {
+	protected WebElement getElement(By loactor) {
 		WebElement ele = driver.findElement(loactor);
 		return ele;
 	}
 
-	public WebElement getElement(String xpath) {
+	protected WebElement getElement(String xpath) {
 		WebElement ele = driver.findElement(By.xpath(xpath));
 		return ele;
 	}
 	
-	public List<WebElement> getElements(By loactor) {
+	protected List<WebElement> getElements(By loactor) {
 		List<WebElement> ele = driver.findElements(loactor);
 		return ele;
 	}
 
-	public List<WebElement> getElements(String xpath) {
+	protected List<WebElement> getElements(String xpath) {
 		List<WebElement> ele = driver.findElements(By.xpath(xpath));
 		return ele;
 	}
 
-	public void clickElementUsingExplicitWait(String xpath) {
+	protected void clickElementUsingExplicitWait(String xpath) {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 		driver.findElement(By.xpath(xpath)).click();
 		GenericFunctions.logMessage("Clicked on element");
 	}
 
-	public void clickElementUsingExplicitWait(By locator) {
+	protected void clickElementUsingExplicitWait(By locator) {
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 		driver.findElement(locator).click();
 		GenericFunctions.logMessage("Clicked on element");
@@ -57,10 +57,20 @@ public class BaseUI {
 		GenericFunctions.logMessage("Filled Text: "+ text);
 	}
 	
-	public void fillText(By locator, String text) {
+	protected void fillText(By locator, String text) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		driver.findElement(locator).sendKeys(text);
 		GenericFunctions.logMessage("Filled Text: "+ text);
+	}
+	
+	protected String getTextofElement(String xpath) {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+		return driver.findElement(By.xpath(xpath)).getText();
+	}
+	
+	protected String getTextofElement(By locator) {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		return driver.findElement(locator).getText();
 	}
 
 

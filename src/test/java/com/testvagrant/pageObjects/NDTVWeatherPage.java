@@ -1,6 +1,8 @@
 package com.testvagrant.pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.testvagrant.utils.BaseUI;
@@ -23,6 +25,8 @@ public class NDTVWeatherPage extends BaseUI {
 	public static String pinYourCityTxtBox = "//input[@id='searchBox']";
 	public static String cityLabelChkBox = "//div[@id='messages']//label[@for='%s']/input";
 	public static String selectCityLabelMapTxt = "//div[@id='map_canvas']//div[@title='%s']//div[@class='cityText']";
+	public static String cityLeaflet = "//div[@class='leaflet-popup-content']";
+	public static String cityLeafletSubHeadingTxt = "//div[@class='leaflet-popup-content']//span[@class='heading']/b[contains(text(),'%s')]";
 
 	public boolean checkCityAlreadyDisplayed(String city) {
 		generic.waitForCompletePageLoad();
@@ -51,19 +55,27 @@ public class NDTVWeatherPage extends BaseUI {
 		}
 		return false;
 	}
+	
+	public void openDetailsLeafletForCity(String cityName) {
+		clickElementUsingExplicitWait(String.format(selectCityLabelMapTxt, cityName));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(cityLeaflet)));
+	}
 
 	public String getTemperatureInDegreeCelsius(String cityName) {
 		String temp = null;
-		return temp;
+		temp = getTextofElement(String.format(cityLeafletSubHeadingTxt, "Degrees"));
+		return temp.split("Degrees: ")[1].trim();
 	}
 
-	public String getTemperatureInFarenheit(String cityName) {
+	public String getTemperatureInFahrenheit(String cityName) {
 		String temp = null;
-		return temp;
+		temp = getTextofElement(String.format(cityLeafletSubHeadingTxt, "Fahrenheit"));
+		return temp.split("Fahrenheit: ")[1].trim();
 	}
 
 	public String getHumidity(String cityName) {
 		String humidity = null;
-		return humidity;
+		humidity = getTextofElement(String.format(cityLeafletSubHeadingTxt, "Humidity"));
+		return humidity.substring(humidity.indexOf(":")+1, humidity.lastIndexOf("%")).trim();
 	}
 }

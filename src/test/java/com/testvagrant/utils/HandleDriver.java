@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class StartDriver {
+public class HandleDriver {
 
 	public WebDriver driver;
 
@@ -38,6 +38,11 @@ public class StartDriver {
 
 		return driver;
 
+	}
+	
+	public void quitDriver(WebDriver driver) {
+		driver.quit();
+		GenericFunctions.logMessage("Browser Closed!!!");
 	}
 
 }
