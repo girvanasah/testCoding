@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="AssignmentTest" parallel="tests" thread-count="1">
+
+	<test name="Assignment" preserve-order="true">
+		<classes>
+			<class name="com.testvagrant.test.AssignmentTest">
+			</class>
+		</classes>
+	</test>
+</suite>

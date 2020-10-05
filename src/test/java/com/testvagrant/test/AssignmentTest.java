@@ -15,7 +15,7 @@ import com.testvagrant.pageObjects.NDTVHomePage;
 import com.testvagrant.pageObjects.NDTVWeatherPage;
 import com.testvagrant.utils.GenericFunctions;
 
-public class Assignment extends BaseTest {
+public class AssignmentTest extends BaseTest {
 
 	GenericFunctions generic;
 	NDTVHomePage homePage;
@@ -47,6 +47,7 @@ public class Assignment extends BaseTest {
 
 	@Test
 	public void openWebsiteAndNavigateToWeatherPage() {
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!"+varianceDegree+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		driver = handleDriver.startDriver(browserType, chromeOrGeckoDriverPath);
 		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		generic = new GenericFunctions(driver);
