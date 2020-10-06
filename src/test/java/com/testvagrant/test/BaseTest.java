@@ -1,7 +1,6 @@
 package com.testvagrant.test;
 
 
-import com.testvagrant.utils.HandleDriver;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +9,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
+
+import com.testvagrant.web.HandleDriver;
 
 public class BaseTest {
 	

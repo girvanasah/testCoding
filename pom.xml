@@ -41,27 +41,8 @@
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
-
-			<!-- <plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>properties-maven-plugin</artifactId>
-				<version>1.0.0</version>
-				<executions>
-					<execution>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>write-project-properties</goal>
-						</goals>
-						<configuration>
-							<outputFile>config.properties</outputFile>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin> -->
 		</plugins>
 	</build>
-
-
 
 	<dependencies>
 		<dependency>
@@ -112,6 +93,4 @@
 			<version>20190722</version>
 		</dependency>
 	</dependencies>
-
-
 </project>

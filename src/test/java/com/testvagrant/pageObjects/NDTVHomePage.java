@@ -3,8 +3,8 @@ package com.testvagrant.pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.testvagrant.utils.BaseUI;
 import com.testvagrant.utils.GenericFunctions;
+import com.testvagrant.web.BaseUI;
 
 public class NDTVHomePage extends BaseUI {
 	

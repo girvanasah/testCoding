@@ -21,7 +21,7 @@ public class AssignmentTest extends BaseTest {
 	NDTVHomePage homePage;
 	NDTVWeatherPage weatherPage;
 	APIFunctions apiFunctions;
-	String url = "https://www.ndtv.com/";
+	String url;
 	String cityName, jsonWeatherDetails, browserType, chromeOrGeckoDriverPath;
 	String jsonWeatherDetailsInDegree, jsonWeatherDetailsInFahrenheit;
 	double webTempInDegree, webTempInFahrenheit, webHumidity;
@@ -31,13 +31,14 @@ public class AssignmentTest extends BaseTest {
 	@BeforeClass
 	public void beforeClass() {
 		try {
-			input = new FileInputStream("Config.properties");
+			input = new FileInputStream("config.properties");
 			prop.load(input);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		browserType = prop.getProperty("browserType");
 		chromeOrGeckoDriverPath = prop.getProperty("chromeOrGeckoDriverPath");
+		url = prop.getProperty("url");
 		apiFunctions = new APIFunctions();
 		cityName = prop.getProperty("cityName");
 		varianceFahrenheit = Double.parseDouble(prop.getProperty("varianceFahrenheit"));
@@ -47,7 +48,6 @@ public class AssignmentTest extends BaseTest {
 
 	@Test
 	public void openWebsiteAndNavigateToWeatherPage() {
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!"+varianceDegree+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		driver = handleDriver.startDriver(browserType, chromeOrGeckoDriverPath);
 		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		generic = new GenericFunctions(driver);

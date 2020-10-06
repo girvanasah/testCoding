@@ -1,4 +1,4 @@
-package com.testvagrant.utils;
+package com.testvagrant.web;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.testvagrant.utils.GenericFunctions;
 
 public class BaseUI {
 
