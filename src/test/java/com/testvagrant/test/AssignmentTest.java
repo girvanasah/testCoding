@@ -1,10 +1,20 @@
 package com.testvagrant.test;
 
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.json.JSONObject;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.html5.LocalStorage;
+import org.openqa.selenium.html5.SessionStorage;
+import org.openqa.selenium.html5.WebStorage;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -106,5 +116,48 @@ public class AssignmentTest extends BaseTest {
 		softAssert.assertTrue(GenericFunctions.compareDatawithVariance(apiHumidity, webHumidity, varianceHumidity),
 				"Humidity exceeds Variance, APIHumidity: " + apiHumidity + " WebHumidity: " + webHumidity);
 		softAssert.assertAll();
+	}
+	
+	@Test
+	public void checkLocalStorage() throws InterruptedException {
+		driver = handleDriver.startDriver(browserType, chromeOrGeckoDriverPath);
+		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+		generic = new GenericFunctions(driver);
+		driver.get("https://www.naukri.com/");
+		Thread.sleep(100);
+		System.out.println("Test");
+		System.out.println("___________");
+		JavascriptExecutor js = (JavascriptExecutor) driver; 
+		String a =  js.executeScript("return window.localStorage;").toString();
+		System.out.println(a.length());
+		System.out.println(a.substring(0, 100));
+		
+		try {
+		      FileWriter myWriter = new FileWriter("D:\\LocalStorage.txt");
+		      myWriter.write(a);
+		      myWriter.close();
+		      System.out.println("Successfully wrote to the file.");
+		    } catch (IOException e) {
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		    }
+		
+		WebStorage webStorage = (WebStorage)driver;
+		String b = webStorage.getLocalStorage().getItem("widgets-[ni-desktop-homepage]-c1");
+		System.out.println(b);
+//		Map<String, String> a =  (Map<String, String>) ;
+//		HashMap<String, String> h = new HashMap<String, String>();
+//		System.out.println(a.trim());
+		String c =  js.executeScript("return window.localStorage.getItem('widgets-[ni-desktop-homepage]-c1');").toString();
+		System.out.println(c.length());
+		System.out.println(c);
+		System.out.println("-----");
+		
+		
+	}
+	
+	@AfterClass
+	public void after() {
+		driver.quit();
 	}
 }
